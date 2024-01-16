@@ -91,10 +91,8 @@ namespace Assets {
     //Replaces the spriteID with a sprite from fpath permanently
     void SpriteReplace(double spriteID, std::string fpath, double imgnum, bool removebg, bool smooth, double xorig, double yorig)
     {
-        // Get the current directory
-        std::string currentDir = Filesys::GetCurrentDir();
         // Add the filepath to the current directory
-        std::string fullpath = currentDir + "\\" + fpath;
+        std::string fullpath = Filesys::GetAssetDir() + fpath;
 
         //PrintMessage(Color::CLR_AQUA, fullpath.c_str());
 

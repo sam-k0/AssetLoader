@@ -5,9 +5,12 @@
 #include <map>
 #include <iostream>
 #include <fstream>
-// File functions
-namespace Filesys {
+#include <filesystem>
 
+// File functions
+
+
+namespace Filesys {
 
 std::string GetCurrentDir() // Returns EXE directory
 {
@@ -22,6 +25,12 @@ std::string GetCurrentDir() // Returns EXE directory
     return str;
 }
 
+// Returns EXE directory + Assets + double backslash
+std::string GetAssetDir()
+{
+    return GetCurrentDir() + "\\Assets\\";
+}
+
 inline bool FileExists(const std::string& name) {
     if (FILE* file = fopen(name.c_str(), "r")) {
         fclose(file);
@@ -32,7 +41,19 @@ inline bool FileExists(const std::string& name) {
     }
 }
 
-void saveDataToFile(const std::map<std::string, std::string>& data, const std::string& filename) {
+std::vector<std::string> findFilesWithExtension(const std::string& directory_path, const std::string& extension) {
+    std::vector<std::string> found_files;
+    
+    for (const auto& entry : std::filesystem::directory_iterator(directory_path)) {
+        if (entry.path().extension() == extension) {
+            found_files.push_back(entry.path().string());
+        }
+    }
+
+    return found_files;
+}
+
+void SaveDataToFile(const std::map<std::string, std::string>& data, const std::string& filename) {
     std::ofstream file(filename);
     if (file.is_open()) {
         for (const auto& pair : data) {
@@ -45,7 +66,7 @@ void saveDataToFile(const std::map<std::string, std::string>& data, const std::s
     }
 }
 
-std::map<std::string, std::string> loadDataFromFile(const std::string& filename) {
+std::map<std::string, std::string> LoadDataFromFile(const std::string& filename) {
     std::map<std::string, std::string> data;
     std::ifstream file(filename);
     if (file.is_open()) {
@@ -65,5 +86,32 @@ std::map<std::string, std::string> loadDataFromFile(const std::string& filename)
     }
     return data;
 }
+
+int GetDataImageCount(std::map<std::string, std::string> dmap)
+{
+    std::string key_imagecount = "IMAGECOUNT";
+    if(dmap.find(key_imagecount) != dmap.end())
+    {
+        return std::stoi(dmap[key_imagecount]);
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+std::string GetDataSpritesheet(std::map<std::string, std::string> dmap)
+{
+    std::string key_image = "SPRITESHEET";
+    if(dmap.find(key_image) != dmap.end())
+    {
+        return dmap[key_image];
+    }
+    else
+    {
+        return "";
+    }
+}
+
 
 }
