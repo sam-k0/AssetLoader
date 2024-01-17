@@ -1,5 +1,6 @@
 #pragma once
 #include "Filesystem.h"
+#include "LHSprites.h"
 #include <SDK.hpp>
 #include <string>
 // Asset Loading
@@ -92,9 +93,10 @@ namespace Assets {
     void SpriteReplace(double spriteID, std::string fpath, double imgnum, bool removebg, bool smooth, double xorig, double yorig)
     {
         // Add the filepath to the current directory
-        std::string fullpath = Filesys::GetAssetDir() + fpath;
+        std::string fullpath = Filesys::GetCurrentDir() + "\\" + fpath;
 
-        //PrintMessage(Color::CLR_AQUA, fullpath.c_str());
+       // PrintMessage(Color::CLR_AQUA, fullpath.c_str());
+
 
         // Check if the file exists
         if (!Filesys::FileExists(fullpath))
@@ -105,7 +107,9 @@ namespace Assets {
 
         YYRValue yyrval;
         CallBuiltin(yyrval, "sprite_replace", nullptr, nullptr, {spriteID, fpath, imgnum, removebg, smooth, xorig, yorig});
-        PrintMessage(Color::CLR_GREEN, (("Replaced asset: ") + fullpath).c_str());
+        PrintMessage(Color::CLR_GREEN, 
+            ("Replaced asset: " + fullpath + " to ID: " + std::to_string((int)spriteID) + "("+LHSprites::GetSpriteName(spriteID)+")")
+            .c_str());
     }
 
     // only works on runtime-loaded assets

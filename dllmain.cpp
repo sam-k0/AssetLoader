@@ -34,30 +34,34 @@ void SwitchSpriteLoop()
             Misc::Print("Exists sprite: " + resname, Color::CLR_BRIGHTPURPLE);
             // Read meta file
             std::map<std::string, std::string> data = Filesys::LoadDataFromFile(metaPath);
-            int imgnum = Filesys::GetDataImageCount(data);
-            std::string spritesheet = Filesys::GetDataSpritesheet(data);
+            int data_imgnum = Filesys::GetDataImageCount(data);
+            std::string data_spritesheet = Filesys::GetDataSpritesheet(data);
 
             // Check if both are valid
-            if (imgnum > 0 /* && Filesys::FileExists(spritesheet)*/ && spritesheet != "")
+            if (data_imgnum > 0 && data_spritesheet != "")
             {
                 // Replace sprite
-                Assets::SpriteReplace(currentSprite, spritesheet, imgnum, true, false, 0.0, 0.0);
-                Misc::Print("Replaced " + resname + " with " + spritesheet, Color::CLR_GREEN);
+                    //Misc::Print("imgnum: " + std::to_string(data_imgnum));
+                    //Misc::Print("Sh: " + data_spritesheet);
+                Assets::SpriteReplace((double)currentSprite, "Assets\\"+data_spritesheet, data_imgnum,
+                                        Filesys::GetDataDoRemoveBG(data),
+                                        Filesys::GetDataDoSmooth(data),
+                                        Filesys::GetDataXOrigin(data), 
+                                        Filesys::GetDataYOrigin(data));             
             }
-            else
+            else // Meta file sus
             {
-                Misc::Print("Invalid meta file for: " + resname, Color::CLR_RED);
-                // Invalid meta file, sprite ignored
+                Misc::Print("Invalid meta file for: " + resname, Color::CLR_RED);                
                 //find reason:
-                if (imgnum <= 0)
+                if (data_imgnum <= 0)
                 {
                     Misc::Print("Invalid image count for: " + resname, Color::CLR_RED);
                 }
-                if (!Filesys::FileExists(spritesheet))
+                if (!Filesys::FileExists(data_spritesheet))
                 {
-                    Misc::Print(Filesys::GetAssetDir() + spritesheet + " does not exist", Color::CLR_RED);
+                    Misc::Print(Filesys::GetAssetDir() + data_spritesheet + " does not exist", Color::CLR_RED);
                 }
-                if (spritesheet == "")
+                if (data_spritesheet == "")
                 {
                     Misc::Print("No spritesheet specified in meta file for: " + resname, Color::CLR_RED);
                 }
@@ -69,8 +73,6 @@ void SwitchSpriteLoop()
             continue;
         }
     }
-
-    //Assets::SpriteReplace(LHSpriteEnum::s_hero_attack_rytsar, "Assets\\amogus_attack.png", 12, true, false, -16.0, 0.0);
 }
 
 DWORD WINAPI SwitchSprites(HINSTANCE hModule)
@@ -82,6 +84,13 @@ DWORD WINAPI SwitchSprites(HINSTANCE hModule)
 
     Misc::Print("Swapping sprites now");
     SwitchSpriteLoop();
+    /*Assets::SpriteReplace(LHSpriteEnum::s_hero_attack_rytsar, "Assets\\amogus_attack.png", 12, true, false, -16.0, 0.0);
+    Assets::SpriteReplace(LHSpriteEnum::s_hero_idle_rytsar, "Assets\\amogus_idle.png", 1, true, false, -16.0, 0.0);
+    Assets::SpriteReplace(LHSpriteEnum::s_hero_charge_rytsar, "Assets\\amogus_idle.png", 1, true, false, -16.0, 0.0);
+    Assets::SpriteReplace(LHSpriteEnum::s_hero_hurt_rytsar, "Assets\\amogus_hurt.png", 1, true, false, -16.0, 0.0);
+    Assets::SpriteReplace(LHSpriteEnum::s_hero_warrior, "Assets\\arba_map.png", 4, true, false, -6.0, -6.0);*/
+    /// TODO: Shit is not working
+
     return TRUE;
 }
 

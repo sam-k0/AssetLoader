@@ -113,5 +113,64 @@ std::string GetDataSpritesheet(std::map<std::string, std::string> dmap)
     }
 }
 
+double GetDataXOrigin(std::map<std::string, std::string> dmap)
+{
+    std::string key = "XORIG";
+    if (dmap.find(key) != dmap.end())
+    {
+        std::string dstr = dmap[key];
+        // convert to double
+        return std::stod(dstr);
+    }
+    else
+    {
+        return 0.0;
+    }
+}
+
+double GetDataYOrigin(std::map<std::string, std::string> dmap)
+{
+    std::string key = "YORIG";
+    if (dmap.find(key) != dmap.end())
+    {
+        std::string dstr = dmap[key];
+        // convert to double
+        return std::stod(dstr);
+    }
+    else
+    {
+        return 0.0;
+    }
+}
+
+bool GetDataDoRemoveBG(std::map<std::string, std::string> dmap)
+{
+    std::string key = "REMOVEBG";
+    if (dmap.find(key) != dmap.end())
+    {
+        std::string dstr = dmap[key];
+        // dstr contains either 0 or 1
+        return (dstr == "1");
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool GetDataDoSmooth(std::map<std::string, std::string> dmap)
+{
+    std::string key = "SMOOTH";
+    if (dmap.find(key) != dmap.end())
+    {
+        std::string dstr = dmap[key];
+        // dstr contains either 0 or 1
+        return (dstr == "1");
+    }
+    else
+    {
+        return false;
+    }
+}
 
 }
