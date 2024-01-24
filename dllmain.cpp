@@ -15,6 +15,7 @@
 // Unload
 YYTKStatus PluginUnload()
 {
+    LHCore::pUnregisterModule(gPluginName);
     return YYTK_OK;
 }
 
@@ -84,13 +85,6 @@ DWORD WINAPI SwitchSprites(HINSTANCE hModule)
 
     Misc::Print("Swapping sprites now");
     SwitchSpriteLoop();
-    /*Assets::SpriteReplace(LHSpriteEnum::s_hero_attack_rytsar, "Assets\\amogus_attack.png", 12, true, false, -16.0, 0.0);
-    Assets::SpriteReplace(LHSpriteEnum::s_hero_idle_rytsar, "Assets\\amogus_idle.png", 1, true, false, -16.0, 0.0);
-    Assets::SpriteReplace(LHSpriteEnum::s_hero_charge_rytsar, "Assets\\amogus_idle.png", 1, true, false, -16.0, 0.0);
-    Assets::SpriteReplace(LHSpriteEnum::s_hero_hurt_rytsar, "Assets\\amogus_hurt.png", 1, true, false, -16.0, 0.0);
-    Assets::SpriteReplace(LHSpriteEnum::s_hero_warrior, "Assets\\arba_map.png", 4, true, false, -6.0, -6.0);*/
-    /// TODO: Shit is not working
-
     return TRUE;
 }
 
