@@ -14,7 +14,7 @@
 
 HINSTANCE DllHandle; // Self modhandle
 
-std::string gPluginName = "SpriteLoader";
+std::string gPluginName = "sam-k0.LoopHero.AssetLoader";
 YYTKPlugin* gThisPlugin = nullptr;
 
 
