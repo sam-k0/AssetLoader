@@ -89,8 +89,6 @@ DWORD WINAPI SwitchSprites(HINSTANCE hModule)
 }
 
 
-
-
 // Entry
 DllExport YYTKStatus PluginEntry(
     YYTKPlugin* PluginObject // A pointer to the dedicated plugin object
@@ -99,7 +97,7 @@ DllExport YYTKStatus PluginEntry(
     gThisPlugin = PluginObject;
     gThisPlugin->PluginUnload = PluginUnload;
 
-    CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)LHCore::ResolveCore, NULL, 0, NULL); // Check if the Callback Core Module is loaded, and wait for it to load
+    CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)LHCore::ResolveCore, gThisPlugin, 0, NULL); // Check if the Callback Core Module is loaded, and wait for it to load
     CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)SwitchSprites, NULL, 0, NULL); // Switch sprites in a different thread as soon as core is loaded
     return YYTK_OK; // Successful PluginEntry.
 }

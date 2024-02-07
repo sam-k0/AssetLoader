@@ -17,8 +17,9 @@ namespace LHCore {
     typedef bool (*UnregisterModule)(std::string);
     UnregisterModule pUnregisterModule = nullptr;
 
-DWORD WINAPI ResolveCore()
+DWORD WINAPI ResolveCore(LPVOID lpParam)
 {
+    YYTKPlugin* plugin = static_cast<YYTKPlugin*>(lpParam);
     Misc::Print("Importing Core function");
     void* rawCoreReady;
     void* rawRegisterModule;
