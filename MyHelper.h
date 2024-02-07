@@ -17,6 +17,11 @@ HINSTANCE DllHandle; // Self modhandle
 std::string gPluginName = "sam-k0.LoopHero.AssetLoader";
 YYTKPlugin* gThisPlugin = nullptr;
 
+DllExport std::string GetPluginName() // For yytk
+{
+    return gPluginName;
+}
+
 
 namespace Misc {
     void Print(std::string s, Color c = CLR_DEFAULT)
