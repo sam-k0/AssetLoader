@@ -44,6 +44,9 @@ SMOOTH=0
 The metadata file's name (in this case `s_hero_idle_rytsar.meta`) contains the name of the sprite to replace,
 so the mod will look for these at game-startup.
 
+> [!TIP]
+> I recommend using UnderTaleModTool to find sprite names and their locations in the game sprite sheets.
+
 The `SPRITESHEET` denotes which image file the game should use.
 
 The `IMAGECOUNT` denotes how many subimages the animation (i.e. Spritesheet) contains.
@@ -56,3 +59,7 @@ The `SMOOTH` variable is useless for pixelart games. It will make your sprites l
 
 More information can be found in the [GameMaker Docs](https://manual.gamemaker.io/monthly/en/#t=GameMaker_Language%2FGML_Reference%2FAsset_Management%2FSprites%2FSprite_Manipulation%2Fsprite_replace.htm&rhsearch=sprite_replace&rhhlterm=sprite_replace).
 
+## Further tools
+
+The `py` directory contains some scripts to help assembling a spritesheet from loose images.
+Note that `pillow` and `tkinter` as well as Python 3.10 are required.
