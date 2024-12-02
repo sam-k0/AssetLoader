@@ -22,11 +22,11 @@ You now have installed the modloader!
 
 Download `LH_AssetLoader.dll` from [here](https://github.com/sam-k0/AssetLoader/releases/).
 
-Besides that, you need to create an `Asset` folder in the root game directory.
+Besides that, you need to create an `Assets` folder in the root game directory.
 This is where all your assets / sprites and metadata files will go.
 
 For a quickstart, I made this Amogus asset pack downloadable from the releases as well, which is ready to go.
-Just extract it and use the newly created `Asset` folder.
+Just extract it and use the newly created `Assets` folder.
 
 ## Metadata files
 Each sprite needs a `.png` / `.jpg` file and a `.meta` file.
