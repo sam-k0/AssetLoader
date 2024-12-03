@@ -5,6 +5,15 @@
 #include <string>
 // Asset Loading
 namespace Assets {
+
+    typedef struct _BBox {
+        double left = 0;
+        double right = 0;
+        double top = 0;
+        double bottom = 0;
+        double mode = 0;
+    } BBox;
+
     // sprite_add(filepath, imgnum, removebg, smooth, xorig, yorig)
     // Filepath is relative to the EXE directory
     double AddSprite(std::string filepath, int imgnum, bool removebg, bool smooth, int xorig, int yorig)
@@ -117,5 +126,25 @@ namespace Assets {
     {
         YYRValue yyrval;
         CallBuiltin(yyrval, "sprite_delete", nullptr, nullptr, { spriteID });       
+    }
+
+    // BBOX funcs
+    // Gets a sprites bbox info
+    BBox GetSpriteBBox(double spriteID)
+    {
+        BBox bbox;
+        bbox.left = Misc::CallBuiltinA("sprite_get_bbox_left", { spriteID });
+        bbox.right = Misc::CallBuiltinA("sprite_get_bbox_right", { spriteID });
+        bbox.top = Misc::CallBuiltinA("sprite_get_bbox_top", { spriteID });
+        bbox.bottom = Misc::CallBuiltinA("sprite_get_bbox_bottom", { spriteID });
+        bbox.mode = Misc::CallBuiltinA("sprite_get_bbox_mode", { spriteID });
+        return bbox;
+    }
+
+    // Set a sprite bbox info
+    void SetSpriteBBox(double spriteID, BBox bbox)
+    {
+        Misc::CallBuiltinA("sprite_set_bbox_mode", { spriteID, bbox.mode });
+        Misc::CallBuiltinA("sprite_set_bbox", { spriteID, bbox.left, bbox.top, bbox.right, bbox.bottom });
     }
 }

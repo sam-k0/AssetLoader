@@ -32,7 +32,7 @@ void SwitchSpriteLoop()
         std::string metaPath = Filesys::GetAssetDir() + resname + ".meta";
         if (Filesys::FileExists(metaPath))
         {
-            Misc::Print("Exists sprite: " + resname, Color::CLR_BRIGHTPURPLE);
+            Misc::Print("Override sprite exists for: " + resname, Color::CLR_BRIGHTPURPLE);
             // Read meta file
             std::map<std::string, std::string> data = Filesys::LoadDataFromFile(metaPath);
             int data_imgnum = Filesys::GetDataImageCount(data);
@@ -41,18 +41,26 @@ void SwitchSpriteLoop()
             // Check if both are valid
             if (data_imgnum > 0 && data_spritesheet != "")
             {
+                // To fix an issue related to bboxes, get bbox info first: bbox mode, top, bottom, left, right 
+                Assets::BBox bbox = Assets::GetSpriteBBox(currentSprite);
+
                 // Replace sprite
-                    //Misc::Print("imgnum: " + std::to_string(data_imgnum));
-                    //Misc::Print("Sh: " + data_spritesheet);
                 Assets::SpriteReplace((double)currentSprite, "Assets\\"+data_spritesheet, data_imgnum,
                                         Filesys::GetDataDoRemoveBG(data),
                                         Filesys::GetDataDoSmooth(data),
                                         Filesys::GetDataXOrigin(data), 
-                                        Filesys::GetDataYOrigin(data));             
+                                        Filesys::GetDataYOrigin(data));      
+
+                Assets::SetSpriteBBox(currentSprite, bbox);
+                Misc::Print("Set sprite bbox to (l,t,r,b,m)" + std::to_string(bbox.left) + "," +
+                    std::to_string(bbox.top) + "," +
+                    std::to_string(bbox.right) + "," +
+                    std::to_string(bbox.bottom) + "," +
+                    std::to_string(bbox.mode), Color::CLR_BRIGHTPURPLE);
             }
             else // Meta file sus
             {
-                Misc::Print("Invalid meta file for: " + resname, Color::CLR_RED);                
+                Misc::Print("Invalid metadata file for sprite: " + resname, Color::CLR_RED);                
                 //find reason:
                 if (data_imgnum <= 0)
                 {
@@ -64,7 +72,7 @@ void SwitchSpriteLoop()
                 }
                 if (data_spritesheet == "")
                 {
-                    Misc::Print("No spritesheet specified in meta file for: " + resname, Color::CLR_RED);
+                    Misc::Print("No spritesheet specified in meta file for sprite: " + resname, Color::CLR_RED);
                 }
                 continue;
             }
