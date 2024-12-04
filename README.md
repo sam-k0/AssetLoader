@@ -18,7 +18,7 @@ To install the mod, follow the basic steps of [installing mods](https://github.c
 - Move `YYToolkit.dll` into the `NativeMods` folder
 
 You now have installed the modloader!
-Don't forget to install the `Callback Core`, as written in thr complete guide.
+Don't forget to install the `Callback Core`, as written in the complete guide.
 *Let's return back to installing this specific mod..*
 
 Download `LH_AssetLoader.dll` from [here](https://github.com/sam-k0/AssetLoader/releases/).
