@@ -1,3 +1,8 @@
+"""
+Tool to generate a spritesheet by merging multiple images in a directory into a single image.
+"""
+
+
 import os
 import re
 from tkinter import Tk, filedialog
@@ -45,7 +50,8 @@ def merge_images_in_directory(directory_path, output_path):
 
     # Save the result image
     result_image.save(output_path)
-    print(f"Total images: {len(image_files)}")
+    print(f"IMAGECOUNT={len(image_files)}")
+    print("You can copy and paste above line into the meta file")
     print(f"Merged image saved at {output_path}")
 
 # Example usage
