@@ -14,13 +14,15 @@ To install the mod, follow the basic steps of [installing mods](https://github.c
     - dinput8.dll
     - YYToolkit.dll
 - Move `dinput8.dll` into the root directory of your game installation (Where `LoopHero.exe` resides).
-- Create a folder called `autoexec` in your root directory
-- Move `YYToolkit.dll` into the `autoexec` folder
+- Create a folder called `NativeMods` in your root directory
+- Move `YYToolkit.dll` into the `NativeMods` folder
 
 You now have installed the modloader!
+Don't forget to install the `Callback Core`, as written in thr complete guide.
 *Let's return back to installing this specific mod..*
 
 Download `LH_AssetLoader.dll` from [here](https://github.com/sam-k0/AssetLoader/releases/).
+Create another directory called `autoexec` and move the mod file there
 
 Besides that, you need to create an `Assets` folder in the root game directory.
 This is where all your assets / sprites and metadata files will go.
