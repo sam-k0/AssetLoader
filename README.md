@@ -1,4 +1,4 @@
-# AssetLoader
+# Sprite Replacer (AssetLoader)
 
 This mod allows you to replace sprites during runtime.
 Unlike replacing the sprites in the game files like when using `UndertaleModTool` for example,
