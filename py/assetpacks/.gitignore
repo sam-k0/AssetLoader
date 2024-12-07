@@ -1,0 +1,2 @@
+# Allow meta files in the following directories
+!*.meta
