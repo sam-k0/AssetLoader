@@ -54,7 +54,7 @@ def merge_images_in_directory(directory_path, output_path):
     print("You can copy and paste above line into the meta file")
     print(f"Merged image saved at {output_path}")
 
-# Example usage
+
 directory_path = select_directory()  # Open file dialog to select the directory
 if directory_path:  # Check if a directory was selected
     output_path = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png"), ("All files", "*.*")])
