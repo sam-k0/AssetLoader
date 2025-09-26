@@ -10,3 +10,17 @@ The following talented artists from the Loop Hero Discord Server have contribute
 
 - Soph - [bluesky](https://bsky.app/profile/ningyousaiban.bsky.social)
 - Sparks System - [steam](https://steamcommunity.com/id/sparkssys/)
+
+# Ready-to-Install Mod
+
+Download [this](https://github.com/sam-k0/AssetLoader/releases/download/pack-2025.09.26/Winterland.Pack.zip) zip archive and extract it into your game folder. (The folder that contains `LoopHero.exe`)
+
+### What does this archive include?
+- Winterland assets (Assets folder)
+- AssetLoader mod (AssetLoader.dll)
+- Loop Hero Core mod (LoopHeroCallbackCore.dll)
+- Modloader (dinput8.dll)
+
+### How to uninstall
+Simply delete the extracted files.
+All of the Loop Hero modding that I do does not modify any of the original game files, so uninstalling is as easy as deleting the files.
