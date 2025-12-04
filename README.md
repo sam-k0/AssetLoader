@@ -6,6 +6,10 @@ you don't need to back-up the game files before modifying them, as the core game
 
 This makes uninstalling simple: Just remove / rename the `dll` file to something like `dll.d`.
 
+> [!TIP]
+> The [Winterland Asset Pack](https://github.com/sam-k0/AssetLoader/tree/master/assetpacks/winterland) can be found here.
+
+
 ## Installation
 
 To install the mod, follow the basic steps of [installing mods](https://github.com/sam-k0/LoopHero_Mods).
